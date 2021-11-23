@@ -1,0 +1,371 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\title{CHE260: Heat Transfer}
+\date{October 2021}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+
+\begin{itemize}
+    \item How is heat transfer different from thermodynamics? In thermodynamics, we assume quasi-equilibrium processes i.e. the time was not an important parameter. In heat transfer, time is an important parameter and we are interested in the rate of heat transfer. 
+    \item What is the relationship between $\dot{Q}$ and $\Delta T$? What are the mechanisms of heat transfer? 
+    \item Conduction: Transfer of heat through a medium that is stationary. 
+    \item Convection: Transfer of heat from a solid surface and an adjacent fluid that is moving. Example: a fan blowing air over a hot plate. There is heat transfer from the hot plate into the fluid. 
+    \item Radiation: Energy emitted by matter in the form of electromagnetic waves. 
+    \item Radiation does not need a medium. In a vacuum, we can have radiation but not convection or condcution.
+    \item Different mechanisms of heat transfer can take place simultaneously.
+    \item Applications \begin{itemize}
+        \item Power Generation \begin{itemize}
+            \item Power plant: steam generation, condenser
+            \item Automobiles: engine cooling, space heating/cooling
+        \end{itemize}
+        \item Buildings \begin{itemize}
+            \item Heating / Cooling
+            \item Hot water 
+        \end{itemize}
+        \item Refrigeration 
+        \item Manufacturing \begin{itemize}
+            \item Casting / Heat treatment
+            \item  Injection Moulding
+        \end{itemize}
+    \end{itemize}
+    
+
+\end{itemize}
+
+
+\section {Electronic Cooling}
+
+
+\begin{itemize}
+    \item $>$ 99 \% of the electrical energy supplied to a circuit is dissipated as heat
+    \item Heat has to be dissipated to the environment while keeping the temperature of the chip in a certain range
+    \item Heat is lost from the surface of the chip
+    \item Important parameter is heat flux $ = \frac{\text{Heat Transfer Rate}}{\text{Unit Area}}$ (in $\frac{W}{\mathrm{cm}^2}$)
+    \item To reduce heat flux, we can reduce heat generation and increase the surface area 
+    \item As size increases, it becomes more difficult to lose heat
+    \item Water cooling is more efficient for large systems compared to air cooling
+\end{itemize}
+
+
+\section{Radiation}
+
+\begin{itemize}
+    \item Radiation is energy emitted by all matter in the form of e.m. radiation
+    \item Thermal radiation is emitted by all bodies at a finite temperature
+    \item Opaque objects emit only from the surface
+    \item Amount of radiation depends on the surface temperature. Summarized by the Stefan Boltzmann Law: $\dot{Q}_{emit} = \sigma A T_s^4$ where $\sigma$ is the Boltzmann constant ($5.67 \times 10^{-8}$ $\frac{W}{m^2k^4}$), $T_s$ is the surface temperature in Kelvin and $A$ is the surface area.
+    \item A surface that emits as much radiation as this is called a "Blackbody". A real surface emits less than this.: $\dot{Q}_{emit} = \epsilon \sigma A T_s^4$ where $\epsilon$ is the emissivity and $0 \leq \epsilon \leq 1$ 
+    \item Black paint has $\epsilon = 0.99$ which is very close to 1. Aluminum foil has a low emissivity of around 0.07. 
+    \item If radiation is incident on a surface some will be absorbed. The fraction absorbed is a surface property known as the absorptivity $\alpha$ such that $\dot{Q}_{absorbed} = \alpha \cdot \dot{Q}_{incident}$ and $\dot{Q}_{reflected} = (1-\alpha) \cdot \dot{Q}_{incident}$
+    \item Kirchoff's law says that $\alpha = \epsilon$
+    \item Note: $\alpha$ and $\epsilon$ vary over different wavelengths
+    \item Consider a special case of radiation \begin{itemize}
+        \item Small surface which is completely surrounded by a much larger surface
+        \item $T_s$, $A_s$ are temperature and area of the small surface (which is also the boundary), $T_{surr}$ is the temperature of the surrounding surface. Both surfaces are emitting and we are interested in the net emission
+        \item $\dot{Q}_{rad} = \epsilon \sigma A_s (T_s^4 - T_{surr}^4)$ 
+    \end{itemize}
+    \item Example \begin{itemize}
+        \item Chip with an area of $15 \times 15 mm$, $\epsilon = 0.6$, $T_{surr} = 25$. 
+        \item Two methods of heat transfer \begin{itemize}
+            \item Natural convection \begin{itemize}
+                \item $h = c(T_s-T_{\infty})^{\frac{1}{4}}$
+                \item $c = 4.2 \frac{W}{m^2 K ^{\frac{5}{4}}}$
+                \item $q_{conv} = hA (T_S - T_{\infty})$
+                \item $q_{rad} = \epsilon A (T_s ^4 - T_{surr}^4)$
+            \end{itemize}
+            \item Forced convetion: $h$ is constant at 250 $\frac{W}{m^2 K}$ \begin{itemize}
+                \item $q_{conv} = h A (T_S - T_{\infty})$
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+\section{Heat Conduction}
+\begin{itemize}
+    \item Heat Conduction Equation \begin{itemize}
+    \item $x,y,z$ components of $\dot{Q}$
+    \item $T$ is a function of $(x,y,z,t)$
+    \item $\vec{\dot{Q}} = \dot{Q}_x \hat{i} + \dot{Q}_y \hat{j} + \dot{Q}_z \hat{k}$
+    \item $\dot{Q}_x = -k A_x \frac{dT}{dx}$ (similar expressions for $\dot{Q}_y$ and $\dot{Q}_z$
+    \end{itemize}
+    \item One dimensional heat conductivity can model more complicated situations. For example if $\Delta x < < \Delta y, z$, $\frac{dT}{dx} >> \frac{dT}{dy},  \frac{dT}{dz}$ so that $\dot{Q}_y$ and $\dot{Q}_z$ can be neglected 
+    \item One dimensional heat conduction \begin{itemize}
+        \item Cross sectional area is $A(x)$ where $x$ is the coordinate along which heat transfer occurs
+        \item $\dot{Q}_x$ at the entry and $\dot{Q}_{x + \Delta x}$ at the exit
+        \item Want to find $T(x)$ inside the object
+        \item Rate of increase of enthalpy $ = m c_p \frac{\partial T}{\partial t} = \rho V c_p \frac{\partial T}{\partial t} = \rho c_p A \Delta x \frac{\partial T}{\partial t}$
+        \item Energy balance: \begin{itemize}
+            \item $\rho c_p A \Delta x \frac{\partial T}{\partial t} = \dot{Q}_x - \dot{Q}_{x + \Delta x}$
+            \item After simplifying and taking the limit as $\Delta x$ approaches 0, we get $\rho c_p \frac{\partial T}{\partial t} = \frac{-1}{A} \frac{\partial (\dot{q} A)}{\partial x}$
+            \item $A$ depends on the coordinate system and we use Fourier's law for $\dot{q}$: $\dot{q} = -k \frac{dT}{dx}$        \end{itemize}
+    \end{itemize}
+    \item Cartesian Coordinates \begin{itemize}
+        \item $A$ is a constant
+        \item $p c_p \frac{\partial T}{\partial t} = \frac{\partial}{\partial x} [k \frac{\partial T}{\partial x}]$
+        \item Assume $k$ is constant. Then $\frac{\partial T}{\partial t} = \alpha \frac{\partial^2 T}{\partial x^2}$ where $\alpha = \frac{k}{pc_p}$. 
+        \item If steady state i.e. $\frac{\partial T}{\partial t} = 0$ then $\frac{d^2T}{d x^2} = 0$. 
+        \item Units of $\alpha = \frac{k}{pc_p}$, the thermal diffusivity is $\frac{m^2}{s}$. 
+        \item High $k$ means the material conducts well. High $pc_p$ means that the material stores energy
+    \end{itemize}
+    \item Cylindrical Coordinates \begin{itemize}
+        \item Heat being conducted radially so $\dot{q} = - k \frac{\partial T}{\partial r}$ and $A = 2 \pi r L$
+        \item $pc_p \frac{\partial T}{\partial t} = \frac{-1}{2 \pi r L} [\frac{\partial }{\partial r} \cdot \frac{\partial T}{\partial r}]$
+        \item $\frac{1}{\alpha} \frac{\partial T}{\partial t} = \frac{1}{r} \frac{\partial }{\partial r}(r \cdot \frac{\partial T}{\partial r})$
+        \item At steady state, $\frac{d}{dr} (r \frac{dT}{dr}) = 0$. 
+    \end{itemize}
+    \item Spherical Coordinates \begin{itemize}
+        \item $A = 4 \pi r^2$ and $\dot{q} = -k \frac{\partial T}{\partial r}$ where $r$ is the radial spherical coordinate
+        \item $\frac{1}{\alpha} \frac{\partial T}{\partial t} = \frac{1}{r^2} \frac{\partial}{\partial r}(r^2 \frac{\partial T}{\partial r})$
+    \end{itemize}
+    \item In general $\frac{1}{r^n} \frac{\partial}{\partial r} (r^n \frac{\partial T}{\partial r}) = \frac{1}{\alpha} \frac{\partial T}{\partial t}$ where 
+    cartesian has $n = 0$, cylindrical has $n=1$ and spherical has $n = 2$. 
+\end{itemize}
+
+\section{Thermal Resistance}
+\begin{itemize}
+    \item At steady state, $\frac{d^2T}{dx^2} = 0$
+    \item Heat flux: $\dot{q} = -k \frac{dT}{dx}$. 
+    \item Heat flux is a constant
+    \item Heat transer rate: $\dot{Q} = \dot{q} A = \frac{-kA(T_2-T_1)}{L}$
+    \item $\dot{Q} = \frac{T_1 - T_2}{R_{wall}}$ where $T_1$ and $T_2$ are the temperatures of the walls
+    \item $R_{cond} = R_{wall} = \frac{L}{kA}$
+    \item Similar to current with voltage and Resistance
+    \item $\dot{Q}_{conv} = hA (T_s - T_{\infty})$
+    \item $R_{conv} = \frac{T_s-T_{\infty}}{Q_{conv}} = \frac{1}{hA}$
+    \item Radiation is more complicated. $\dot{Q}_{rad} = \epsilon \sigma A(T_s^4 - T_{sur}^4)$
+    \item We need to define a heat transfer coefficient for radiation. $h_{rad} = \frac{\epsilon \sigma A(T_s^4 - T_{sur}^4)}{A(T_s - T_{sur})}$
+    \item $h_{rad} = \epsilon \sigma (T_s^2 + T_{sur}^2)(T_s + T_{sur})$
+    \item Can treat it as a resistance. $R_{rad} = \frac{T_s - T_{sur}}{\dot{Q}_{rad}} = \frac{1}{h_{rad}A}$
+    \item Multilayer Plane Wall \begin{itemize}
+        \item Each layer has the same surface Area
+        \item Layers have thicknesses $L_i$
+        \item Temperature varies as $T_1$ on the outside, $T_2$, ..., $T_{n+1}$ where $n$ is the number of surfaces
+        \item Treat each layer seperately as resistances in series
+        \item For first wall $\dot{Q} = \frac{T_1-T_2}{R_1}$ so $T_1 - T_2 = \dot{Q}R_1$. In general, $T_i - T_{i+1} = \dot{Q}R_i$
+        \item Summing all of them gives $T_1 - T_{n+1} = \dot{Q}(R_1 + ... + R_n)$ so that $\dot{Q} = \frac{T_1 - T_4}{R_{total}}$
+        \item Therefore you can sum up resistances similar to electric circuits
+        \item We can find each $R_i$ as $\frac{L_i}{k_i A}$
+    \end{itemize}
+    \item $\dot{Q} = UA(T_{\infty, 1} - T_{\infty, 4})$ where $U$ is the overall heat transfer
+    \item Example: Refrigerator Wall \begin{itemize}
+        \item 1 mm thick insulation on the outside and width of refrigerator is $L$. 
+        \item $T_{room} = 25C$ and $T_{refrig} = 3C$
+        \item $h_0 = 9 \frac{W}{m^2C}$ and $h_i = 4 \frac{W}{m^2C}$
+        \item $k_{steel} = 15.1  \frac{W}{m^2C}$ and $k = 0.035 \frac{W}{m^2C}$ inside the refrigerator
+        \item Constraint is that $T_{s, out} > 20$. We assume heat transfer from the outside room to the inside of the refrigerator
+        \item What is $L$ to ensure $T_{s, out} > 20$ to prevent condensation on the outside of the refrigerator
+        \item Thermal circuit consists of a convective resistance outside the refrigerator followed by 3 conductive resistance on the surfaces and then one convective resistance at the end
+        \item INSERT PICTURE FROM LEC NOTES
+        \item $\dot{Q} = \frac{T_{room} - T_{s,out}}{R_{conv, 0}} = \frac{T_{room} - T_{s, out}}{\frac{1}{h_0A}}$
+        \item Consider unit area. Then $\dot{Q} = h_0 (T_{room} - T_{s, out}) = 9(25-20) = 45 W$
+        \item $R_{total} = \frac{1}{h} + (\frac{L}{k})_{metal} + (\frac{L}{k})_{insulation} + (\frac{L}{k})_{metal} + \frac{1}{h_i} = \frac{1}{9} + \frac{10^{-3}}{15.1} + \frac{L_2}{0.035} + \frac{10^{-3}}{15.1} + \frac{1}{4} = 0.361 + \frac{L_2}{0.035}$
+        \item $\dot{Q} = \frac{T_{room} - T_{refrig}}{R_{total}} \rightarrow 45 (0.361 + \frac{L_2}{0.035}) = 25 - 3$ so that $L = 45 mm$
+    \end{itemize}
+\end{itemize}
+\section{Thermal Resistance Networks}
+\begin{itemize}
+    \item Multiple layers e.g. in an electric chip each with different thermal properties \begin{itemize}
+        \item We are interested in $\dot{Q} = \dot{Q}_1 + \dot{Q}_2 + \dot{Q}_3 = \frac{T_1-T_2}{R_1} + \frac{T_1-T_2}{R_2} +  \frac{T_1-T_2}{R_3}$
+        \item $ = (T_1-T_2)(\frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3}) = \frac{T_1-T_2}{R_{total}}$
+        \item This is the electrical analog to parallel resistances
+    \end{itemize}
+    \item Thermal contact resistance \begin{itemize}
+        \item So far we have been assuming perfect contact between different boundaries
+        \item In reality, there is a rough surface at the boundary
+        \item We can always define a thermal contact resistance $R_c = \frac{T_2-T_1}{\dot{q}}$ (units are $\frac{m^2 C}{W}$ (Note: Resistanc per unit area)
+        \item The reciprocal of $R_C$ is known as the thermal contact conductance $h_c$. 
+        \item $h = \frac{1}{R_c} = \frac{\dot{q}}{\Delta T}$ so that $\dot{q} = h_c \Delta T$
+        \item $h_c$ is thus similar to the heat transfer coefficient
+    \end{itemize}
+    \item Heat conduction in cylinders \& spheres \begin{itemize}
+        \item INSERT DRAWING FROM THE SLIDEs
+        \item For a long pipe, the main temperature gradient is in the radial direction i.e. $\frac{dT}{dx} << \frac{dT}{dR}$
+        \item Therefore we can assume 1-D radial conduction
+        \item INSERT $r_1$, $r_2$ diagram 
+        \item Solve heat conduction equation in cylindrical coordinates to get $T(r)$
+        \item Steady state: $\frac{d}{dr}(r \frac{dT}{dr}) = 0$, at $r = r_1, T = T_1$ and at $r = r_2, T = T_2$
+        \item Integrate this to get $T(r) = c_1 \ln r + c_2$
+        \item Using the boundary conditions gives $c_1 = \frac{T_1-T_2}{\ln(\frac{r_1}{r_2})}$ and $c_2 = T_2 -  \frac{T_1-T_2}{\ln(\frac{r_1}{r_2})} \ln r_2$ 
+    \end{itemize}
+    \item Define thermal resistance of a cylinder \begin{itemize}
+        \item $R_{cyl} = \frac{T_1-T_2}{\dot{Q}_{cond}} = \frac{\ln (\frac{r_2}{r_1})}{2 \pi L K}$
+    \end{itemize}
+\end{itemize}
+\section{Conduction in cylinders and spheres, Insulation}
+\begin{itemize}
+    \item Inner temperature and then two surface layers
+    \item $R_C = \frac{1}{hA} = \frac{1}{2 \pi r L h}$
+    \item $R_{total} = R_{c,1} + R_{cond} + R_{c,2} = \frac{1}{2 \pi r_1 L h_1} + \frac{\ln (\frac{r_2}{r_!})}{2 \pi L R} + \frac{1}{2 \pi r_2 L h_2}$
+    \item Insulation \begin{itemize}
+        \item $R_{total} = R_{c, 1} + R_{cyl, 1} + R_{cyl, 2} + R_{c, 2}$ where $R_{cyl, 2}$ is for the insulation
+        \item For a sphere \begin{itemize}
+            \item Insulation around a spherical metal tank 
+            \item $R_{total} = R_{c,1} + R_{sph, 1} + R_{sph, 2} + R_{c,2}$
+            \item $= \frac{1}{4 \pi r_1^2 h_1} + \frac{r_2-r_1}{4 \pi r_1 r_2 k_1} + \frac{r_3 - r_2}{4 \pi r_3 r_2 k} + \frac{1}{4 \pi r_3^2 h_2}$
+        \end{itemize}
+    \end{itemize}
+    \item R-value \begin{itemize}
+        \item Thermal resistance. Thickness $L$, Surface area $A$ and thermal conductivity $k$
+        \item $R = \frac{L}{k}$ is the R-value
+        \item $\dot{Q} = \frac{\Delta T}{R} \times A$
+        \item Units here are in imperial units i.e. $L$ is in feet, $k$ is in $\frac{Btu}{h ft F}$
+    \end{itemize}
+    \item Critical Radius of insulation \begin{itemize}
+        \item Consider the area for heat loss
+        \item Insulation: increase thickness, increasing conduction resistance and decreasing convective resistance 
+        \item Can we increase heat transfer? \begin{itemize}
+            \item Plot $\dot{Q}$ against $r_2$ to find the critical value of Resistance
+            \item Equivalently set $\frac{d\dot{Q}}{dr_2} = 0$ to find the critical radius
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+\section {Heat Transfer from Finned Surfaces }
+\begin{itemize}
+    \item Read Chapter 17.6
+    \item How to find $R_{heat sink}$ for finned surfaces e.g. heat sinks in computers
+    \item Add diagram from notes: We have a cylinder with cross sectional area $A_c(x)$ and heat transfer coeff $h$. \begin{itemize}
+        \item Consider a thin slice of this with thickness $\Delta x$ some distance $x$ away from the end
+        \item Energy balance $\dot{Q}_{cond, x}$ in and $\dot{Q}_{cond, x+\Delta x}$ out
+        \item Energy in = Energy out: $\dot{Q}_{cond, x} = \dot{Q}_{cond, x+\Delta x} + \dot{Q}_{conv}$
+        \item Let the perimeter of fin be $P$. Then surface area of element is $P \Delta x$ so that $\dot{Q}_{conv} = h P \Delta x (T - T_{\infty})$
+        \item Simplifying the energy balance by taking the limit as $\Delta x \rightarrow 0$: $\frac{d \dot{Q}_{cond}}{dx} + hP(T-T_{\infty}) = 0$
+        \item Using Fourier's law $\dot{Q}_{cond} = -kA_C \frac{dT}{dx}$: $\frac{d}{dx} (kA_c \frac{dT}{dx}) - hP(T - T_{\infty}) = 0$
+        \item Assuming $A_C, k, P$ constant: $\frac{d^2T}{dx^2} - \frac{hP}{kA_C}(T-T_{\infty}) = 0$
+        \item Define $\Theta = T - T_{\infty}$ and $a^2 = \frac{hP}{kA_c}$ (constant) so that $\frac{d^2\Theta}{dx^2} - a^2 \Theta = 0$ where the solution is $\Theta(x) = c_1 e^{ax} + c_2 e^{-ax}$
+        \item Boundary conditions: $T = T_b$ at the left end while on the right end as $L \rightarrow \infty$, $T = T_{\infty}$
+        \item Therefore we simplify by having $T = T_{\infty}$ at $x = L$
+        \item In terms of $\Theta$: At $x = 0$, $\Theta = T_b - T_{\infty} = \Theta_b$ and $\Theta (\infty) = 0$ 
+        \item This gives $c_1 = 0$ and $c_2 = \Theta_b$ so that the solution is $\Theta(x) = \Theta_b e^{-ax}$ 
+    \end{itemize}
+    \item What is the heat loss from the fin? $\dot{Q}_b = -kA_c \frac{dT}{dx} |_{x = 0} \dot{Q}_{fin}$
+    \item $\dot{Q}_{fin, long} = \sqrt{hPkA_C} (T_b - T_{\infty})$
+    \item Finite fin length: What is the boundary condition at the open end \begin{itemize}
+        \item We can heat transfer is negligible so that adiabatic and $\frac{dT}{dx} = 0$ at the boundary
+        \item At $x = L$, $\frac{dT}{dx} = 0$ so that $\frac{d \Theta}{dx} = 0$: $c_1 e^{aL} - c_2 e^{-aL} = 0$ 
+        \item At $x = 0$, $\Theta = \Theta_b$
+        \item Solve for $c_1$ \& $c_2$ and the following solution will be obtained: $\frac{T(x) - T_{\infty}}{T_b - T_{\infty}} = \frac{\cosh a(L-x)}{\cosh aL}$ 
+    \end{itemize}
+    \item Can do the same for $\dot{Q}_{fin, insulated} = -k A_C \frac{dT}{dx} |_{x=0}$ which will give $\dot{Q}_{fin, insulated} = \sqrt{hPkA_c} (T_b - T_{\infty}) \tanh(aL)$ where $a = \sqrt{\frac{hP}{kA_c}}$
+    \item To account for heat transfer from the tip, we can add a length $\Delta L$ at the end and the area there will be $A_c = \Delta L P$ ($P$ is the perimeter of the fin) so that the corrected length is $L_c = L + \frac{A_c}{P}$
+\end{itemize}
+\section{Heat transfer from finned surfaces (contd)}
+\begin{itemize}
+    \item Fin efficiency \begin{itemize}
+        \item $\Delta T$ given by the difference between the fin temperature and the surrounding
+        \item Most efficient fin would have a uniform temperature $T_b$ everywhere
+        \item This would imply an infinite thermal conductivity
+        \item In this case, $\dot{Q} = h A_{fin} (T_b - T_{\infty}) = hPL(T_b - T_{\infty})$
+        \item We define $\eta_{fin} = \frac{dot{Q}_{fin}}{\dot{Q}_{fin, max}}$
+        \item For an infinitely long fin, $\eta_{fin, long} = \frac{\sqrt{hPkA_c}(T_b - T_{\infty})}{hPL(T_b - T_{\infty})} = \frac{1}{L} \sqrt{\frac{kA_c}{hP}} = \frac{1}{aL}$ which is in terms of physical properties
+        \item $\dot{Q}_{fin} = \eta_{fin} \dot{Q}_{fin, max} = \eta_{fin} hA_{fin} (T_b - T_{\infty}) = h \eta_{fin} A_{fin} (T_b-T_{\infty})$
+        \item $\eta_{fin} A_{fin}$ can be treated as the corrected area
+        \item For an insulated tip, perform the same steps with the original definition to get $\eta_{insulated tip} = \frac{\tanh{aL}}{aL}$
+    \end{itemize}
+    \item Fin effectiveness \begin{itemize}
+        \item How much has the fin increased heat transfer by?
+        \item $\epsilon_{fin} = \frac{\dot{Q}_{fin}}{\dot{Q}_{no fin}}$
+        \item $\dot{Q}_{no fin} = hA_c(T_b - T_{\infty})$
+        \item $\dot{Q}_{long fin} = \sqrt{hPkA_c} (T_b - T_{\infty})$ so that $\epsilon_{long fin} =  \sqrt{\frac{kP}{hA_c}}$
+        \item To increase the effectiveness, make $k$ as large as possible and maximize $\frac{P}{A_c}$
+        \item Fins are most effective with low $h$ so they are used for gases, hot liquids
+        \item Generally we use fins if $\epsilon \geq 2$
+    \end{itemize}
+    \item When can we assume fins are infinitely long? \begin{itemize}
+        \item $\frac{\dot{Q}_{fin, insulated}}{\dot{Q}_{fin, long}} = \tanh(aL)$. $\tanh$ asymptotically approaches 1 as $aL$ approaches $\infty$
+        \item In practice, if $aL \geq 5$ we can assume an infinitely long fin. But even $aL = 1$ has $\tanh = 0.76$ so it gives 76 \% of heat transfer of an infinitely long fin. Therefore $L = \frac{1}{a}$ is a reasonable length for a fin 
+    \end{itemize}
+    \item Designing a heat sink \begin{itemize}
+        \item $\dot{Q}_{total} = \dot{Q}_{unfinned} + \dot{Q}_{fin}$
+        \item From the definition of efficience $\dot{Q}_{fin} = \eta_{fin} \cdot h A_{fin}(T_b - T_{\infty})$
+        \item $\Rightarrow \dot{Q}_{total} = hA_{unfinned} (T_b-T_{\infty}) + h \eta_{fin} A_{fin} (T_b - T_{\infty}) = h \left[A_{unfinned} + \eta_{fin}A_{fin}\right] (T_b - T_{\infty})$
+        \item We can define a thermal resistance $R_{fin} = \frac{T_b - T_{\infty}}{\dot{Q}_{total}} = \frac{1}{h \left[A_{unfinned} + \eta_{fin}A_{fin}\right]}$
+    \end{itemize}
+\end{itemize}
+\section{Transient Heat Conduction} 
+\begin{itemize}
+    \item Consider a solid at temperture $T_i$ and a liquid at $T_{\infty} < T_i$. The solid is dropped into the liquid. How does $T$ vary over time? \begin{itemize}
+        \item We would expect the temperature $T$ to asymptotically approach $T_{\infty}$
+        \item Heat Conduction equation: $\frac{\partial^2 T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2} + \frac{\partial^2 T}{\partial z^2} = \frac{1}{\alpha} \frac{\partial T}{\partial t}$
+        \item We set the first three terms equal to 0 by using the lumped capacitance approximation i.e. no temperature gradient in the body
+        \item We would expect this to be valid when the object is small and has a high thermal conductivity
+        \item Using an energy balance: $\dot{E}_{store} = - \dot{Q}_{conv}$
+        \item $\dot{E}_{store} = mc_p \frac{dT}{dt} = \rho V c_p \frac{dT}{d}$ and $\dot{Q}_{conv} = hA(T - T_{\infty})$
+        \item Equating the two, we get $\frac{d(T - T_{\infty})}{T-T_{\infty}} = - \frac{hA}{\rho V c_p} dt$ so that $\ln (T - T_{\infty}) = \frac{-hA}{\rho V c_p} t + C_1$
+        \item Using $T = T_i$ at $t = 0$, we get $\ln \left[ \frac{T-T_{\infty}}{T_i - T_{\infty}} \right] = \frac{-hA}{\rho V c_p} t$
+        \item We define a "time constant" $\tau = \frac{\rho V c_p}{hA}$ so that $\frac{T-T_{\infty}}{T_i - T_{\infty}} = \exp \left[\frac{-t}{\tau}\right]$
+        \item The LHS starts at 1 and decays to 0 as $t \rightarrow \infty$. Moreoever at $t  =\tau$, the value is $\frac{1}{e} \approx 0.368$ 
+    \end{itemize}
+    \item The response time of a thermometer is usually $3 \tau$. However it is important to note that $\tau$ is a function of $h$ so it varies in different environments
+    \item Moreover $\tau$ depends on $\frac{V}{A} = \frac{r}{3}$ for a sphere so to get a fast response time you would make it very thin
+    \item When is a lumped capacitance valid? \begin{itemize}
+        \item At steady state, the conduction in a solid must be equal to the convection in a fluid i.e. $kA \frac{(T_1 - T_2)}{L} = hA (T_2 - T_{\infty})$ i.e. $\frac{T_1 - T_2}{T_2 - T_{\infty}} = \frac{hL}{k}$
+        \item $\frac{hL}{k}$ is a dimensionless number and is known as a Biot number. 
+        \item Note: $k$ is the thermal conductivity of the solid, $L$ is the length scale in the direction of conduction
+        \item Suppose the Biot number is large i.e. $>> 1$ so that $T_1 - T_2 >> T_2 - T_{\infty}$
+        \item If Biot number is very small, then $T_1 - T_2 << T_2 - T_{\infty}$ so we can neglect $T$ change inside the body (we assume uniform temp in the body) and use the lumped capacitance model
+        \item By $<<$ we typically mean a Biot value $<0.1$
+        \item In an irregular body, the length scale used is $L = \frac{V}{A}$
+    \end{itemize}
+\end{itemize}
+
+\section {Transient Heat Conduction in 2 and 3 Dimensions}
+\begin{itemize}
+    \item A ball of volume $V$,mass $m$ and SA $A$ and heat transfer coefficient $h$ is droppped into a fluid
+    \item Assume that the temperature $T$ is uniform in the body
+    \item We had previously assumed that if $Bi < 0.1$ we have a lumped capacitance
+    \item Example: Steel shaft, $k = 51.2$, $\rho = 7832$, $c = 541$ and $T_i = 300$ is placed into a furnace with $T_{\infty} = 1200$. \begin{itemize}
+        \item How long before the shaft temperature reaches 800?
+        \item We first calculate the Biot number as $Bi = \frac{hL}{k}$ where $L = \frac{V}{A} = \frac{\pi r^2 L}{2 \pi r L} = \frac{r}{2}$
+        \item Then $Bi = \frac{h \frac{r}{2}}{k} = \frac{100 \times \frac{0.05}{2}}{51.2} = 0.05$ so we can apply the lumped value
+        \item $\frac{T - T_{\infty}}{T_i - T_{\infty}} = \exp \left[ - \frac{hA}{\rho V c} t \right]$ where $\frac{A}{V} = \frac{2}{r}$
+        \item This gives $\ln \left[ \frac{800-1200}{300-1200} \right] = \dots $ and solving gives $t = 859 s$
+    \end{itemize}
+    \item Transient heat conduction in 3 dimensions e.g. plane walls, cylinders, spheres \begin{itemize}
+        \item What happens if $Bi > 0.1$? 
+        \item In this case we cannot neglect the temperature gradients inside the body
+        \item Have to solve the complete heat conduction equation
+        \item Consider a solid wall with temperature $T_i$ on one side which then instantly becomes lowered to a temperature $T_{\infty}$ as it is placed into a fluid. 
+        \item As time increases, the temperature inside the wall e.g. at the center decreases
+        \item So in this case, $T$ is a function of $x$ and $t$
+        \item For a plane wall $\frac{\partial^2 T}{\partial x^2} = \frac{1}{\alpha} \frac{\partial T}{\partial t}$ where $\alpha = \frac{k}{\rho c_p}$ is the thermal diffusivity
+        \item Second order wrt $x$ so two boundary conditions are needed there. First order wrt $t$ so one initial condition is neeeded there
+        \item This can be solved analytically but we will not do that
+        \item We instead consider the lumped capacitance solution $\ln \left[ \frac{T-T_{\infty}}{T_i - T_{\infty}} \right] = \frac{-hA}{\rho V c_p} t$
+        \item We take the characteristic length $L = \frac{V}{A}$. 
+        \item $\frac{hA}{\rho V c_p} t = \frac{h}{\rho L c_p} t = (\frac{h}{\rho L c_p} t) (\frac{L}{L} \cdot \frac{k}{k}) = (\frac{hL}{k})(\frac{k}{\rho c_p})(\frac{t}{L^2}) = (\frac{hL}{k})(\frac{\alpha t}{L^2})$ where $Bi = \frac{hL}{k}$ which is unitless
+        \item We define the Fourier number $Fo = \frac{\alpha t}{L^2}$ which is also dimensionless
+        \item The dimensionless temperature $\Theta = \frac{T - T_{\infty}}{T_i - T_{\infty}}$ so that the lumped capacitance solution can be written as $\Theta = \exp (-Bi \cdot Fo)$
+        \item A physical interpreation of the Fourier number can be found by considering a cube with side length $L$. Then $\dot{Q}_{cond} = k A \frac{\partial T}{\partial x} = k L^2 \frac{\Delta T}{L} = k L \Delta T$
+        \item $\dot{Q}_{store} = m c_p \frac{\partial T}{\partial t} = \rho L^3 c_p \frac{\Delta T}{t}$ so that $\frac{\dot{Q}_{cond}}{\dot{Q}_{store}} = \frac{k}{\rho c_p} \cdot \frac{t}{L^2} = \frac{\alpha t}{L^2} = Fo$
+        \item Even when we cannot assume lumped capacitance and get an exact solution of the heat conduction equation, the solution is of the form $\Theta = \Theta (Bi, Fo)$
+        \item We can define $\Theta_0 = \frac{T_0 - T_{\infty}}{T_i - T_{\infty}}$ so that the solution is of the form $\Theta_0 = A_1 e^{-\lambda_1^2 Fo}$ where $A_1, \lambda_1$ are function of $Bi$
+    \end{itemize}
+    \item Example: Carbon steel plate with $T_i = 440$ is placed in a furnace at $T_{\infty} = 600$. We need to heat to a minimum temperature of 520. What is the time $t$ required. \begin{itemize}
+        \item $h = 200$, $k = 40$ and $\alpha = 8 \times 10^{-6}$
+        \item $Bi = \frac{hL}{k} = \frac{200 \times 0.04}{40} = 0.2$
+        \item Since $Bi > 0.1$, we cannot use the lumped capacitance and instead use the analytical solution which we obtain from tables
+        \item From Table 18.2, $Bi = 0.2 \implies \lambda_1 = 0.4328, A_1 = 1.0311$
+        \item $\Theta_0 = \frac{T_0 - T_{\infty}}{T_i - T_{\infty}} = A_1 e^{- \lambda_1^2 Fo}$
+        \item $\Theta_0 = \frac{520 - 600}{440-600} = 0.5$ so that $0.5 = 1.0311 \exp (- (0.4328)^2 Fo)$ and so $Fo = 3.864$
+        \item $Fo = \frac{\alpha t}{L^2} \implies t = \frac{Fo L^2}{\alpha} = \frac{3.864 \times (0.04)^2}{8 \times 10^{-6}} = 773 s$
+    \end{itemize}
+\end{itemize}
+\end{document}

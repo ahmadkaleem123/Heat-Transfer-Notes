@@ -411,4 +411,68 @@
         \item Define effusivity as $\gamma = \sqrt{k \rho c}$
     \end{itemize}
 \end{itemize}
+
+\section{Forced convection, Velocity and Thermal boundary layers, Reynolds, Prandtl and Nusselt numbers}
+
+\begin{itemize}
+    \item Forced Convection \begin{itemize}
+        \item Convection is the heat transfer from a surface to a moving fluid
+        \item Forced part means that motion is imposed by external means
+        \item A surface at a temperature $T_s$ and a fluid with velocity $V_{\infty}$ and temperature $T_{\infty}$
+        \item $\dot{Q}_{conv} = hA(T_s - T_{\infty})$
+        \item How do we determine $h$? \begin{itemize}
+            \item Quite complicated
+            \item Depends on physical properties of fluid: viscosity $\mu$, density $\rho$, thermal conductivity $k$ and specific heat $c_p$
+            \item Depends on the fluid velocity $V_{\infty}$
+            \item Depends on the shape and size of body: Characteristic length i.e. for a plate it is the length $L$ whereas for a cylinder of sphere it is the diameter $D$. Differences for objects of irregular shapes
+            \item Type of flow - laminar, turbulent
+        \end{itemize}
+    \end{itemize}
+    \item Velocity Boundary layer \begin{itemize}
+        \item Incoming flow at velocity $V_{\infty}$ and temperature $T_{\infty}$ and a solid plate
+        \item There is a no slip condition at the interface between the fluid and the solid. i.e. the velocity at the interface must be 0 but if you move away, it will go back to $V_{\infty}$
+        \item We can define a boundary layer thickness by choosing where the velocity is $0.99 V_{\infty}$
+        \item At $y = 0$ (plate surface), $V = 0$. The heat transfer there is thus by conduction only so that Fouriers law applies
+        \item Here $\dot{q}_{cond} = -k_{fluid} \frac{\partial T}{\partial y} |_{y= 0}$. We have also defined $\dot{q}_{conv} = h (T_s - T_{\infty})$
+        \item At $y = 0$, $\dot{q}_{conv} = \dot{q}_{cond}$ so that $h = \frac{-k_{fluid} \frac{\partial T}{\partial y} |_{y = 0} }{T_s - T_{\infty}}$
+        \item Therefore $h$ depends on $k_{fluid}$ and the temperature gradient $\frac{\partial T}{\partial y} |_{y = 0}$. This leads to thermal boundary layers
+    \end{itemize}
+    \item Thermal Boundary layer \begin{itemize}
+        \item Temperature of the surface is $T_s > T_{\infty}$
+        \item Fluid coming at temperature $T_{\infty}$
+        \item When the fluid comes in contact with the plate, there cannot be a discontinuity so it must be equal to $T_s$ at the contact point
+        \item INSERT PIC FROM NOTES. We define the thermal boundary layer in a similar way to be the point where $T - T_s = 0.99(T_{\infty} - T_s)$
+        \item $\frac{\partial T}{\partial y} |_{y = 0}$ is the temperature gradient. 
+        \item $h$ changes with position as the local $\frac{\partial T}{\partial y} |_{y=0}$ changes
+        \item We define a local heat transfer coefficient $h(x)$
+        \item We can average: $\bar{h} = \frac{1}{L} \int_{0}^{L} h(x) \, dx$
+        \item Instead of worrying about local variations, we use the average value of $h$
+    \end{itemize}
+    \item Velocity Boundary layer flow \begin{itemize}
+        \item The difference between the boundary and the surfaces increases linearly as a straight path in laminar flow
+        \item There is a transition region then where the path will start becoming unstable which eventually becomes a turbulent region with turbulent flow
+        \item Fluid exerts a drag on the plate. Measured in terms of the shear stress (force per unit area) 
+        \item $\tau = \mu \frac{\partial V}{\partial y} |_{y = 0}$ where $\mu$ is the fluid viscosity ($\frac{kg}{ms}$)
+        \item Velocity gradient can be solved but it is very complicated and practically we define a friction coefficient
+        \item We imagine a fluid coming to rest at a stagnation point. Using Bernoulli's equation, $\frac{P}{\rho} = \frac{V_{\infty}^2}{2} + \frac{P_{\infty}}{\rho} \implies P - P_{\infty} = \frac{\rho V_{\infty}^2}{2}$. This is the pressure rise and the force felt by plate
+        \item We define the friction coefficient $c_f$ so that $\tau = c_f \frac{\rho v_{\infty}^2}{2}$
+        \item Generally we expect $c_f \sim 1$ but this depends on the shape
+    \end{itemize}
+    \item Laminar \& Turbulent Flow \begin{itemize}
+        \item Heat transfer is greater in turbulent flow i.e. with an increased velocity
+        \item However when the heat transfer goes up, shear goes up and so bigger fans (more energy) are needed
+        \item The transition to turbulence depends on the ratio of fluid inertia to viscosity
+        \item A high inertia drives random motion and therefore turbulence
+        \item A high viscosity damps turbulence
+        \item Consider a mass with diameter $D$ and a fluid coming in around it at velocity $V_{\infty}$ \begin{itemize}
+            \item There is an inertial force $F_i$ and a viscous force $F_v$
+            \item Take the characteristic distance to be $D$
+            \item The inertial force $F_i = ma$ where the mass $m = \rho D^3$ and the acceleration $a = \frac{V_{\infty}^2}{D}$
+            \item The viscous force $F_v = \tau A = \mu \frac{\partial V}{\partial y} \cdot A$
+            \item $F_v \sim \mu \frac{V_{\infty}}{D} \cdot D^2 \implies \frac{F_i}{F_v} = \frac{\rho V_{\infty}D}{\mu}$
+            \item This number is known as the Reynolds number: $Re = \frac{\rho V_{\infty}D}{\mu}$
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
 \end{document}

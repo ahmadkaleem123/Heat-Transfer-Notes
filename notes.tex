@@ -475,4 +475,70 @@
     \end{itemize}
 \end{itemize}
 
+
+\section{Forced Convection Currents} \begin{itemize}
+    \item Fluid with velocity $V_{\infty}$ and density $\rho_{mu}$. What forces are exerted onto the body (with characteristic length being the diameter $D$) \begin{itemize}
+        \item Inertial force $F_i = ma$ \begin{itemize}
+            \item $m \sim \rho D^3$
+            \item The fluid starts with velocity $V_{\infty}$ and is brought to rest over a distance $D$ 
+            \item $t = \frac{D}{V_{\infty}}$
+            \item $\Delta V = V_{\infty}$ so $a \sim \frac{\Delta v}{t} = \frac{V_{\infty}}{\frac{D}{V_{\infty}}} = \frac{V_{\infty}^2}{D}$
+            \item Thus $F_i \sim \rho D^3 (\frac{V_{\infty}^2}{D}) = \rho D^2 V_{\infty}^2$
+        \end{itemize}
+        \item Viscous Force \begin{itemize}
+            \item $F_v = \tau A = \mu \frac{dV}{dy} \cdot A$
+            \item $F_v \sim \mu \frac{V_{\infty}}{D} \cdot D^2$
+        \end{itemize}
+        \item We are interested in the ratio \begin{itemize} 
+            \item $\frac{F_i}{F_v} \sim \frac{\rho V_{\infty} D}{\mu}$
+            \item This is a very important number called the Reynolds Number $Re = \frac{\rho V_{\infty} D}{\mu}$
+            \item The kinematic viscosity is defined as $\nu = \frac{\mu}{\rho}$ so that he Reynolds number can also be written as $Re = \frac{V_{\infty} D}{\nu }$
+            \item For small $Re$, viscous forces are dominant. Fluctuations in the flow are damped. This leads to laminar flow. 
+            \item For large $Re$, inertial forces are dominant. Fluctuations in the flow become amplified and this leads to turbulent flow 
+            \item For every geometry, there is a critical value of $Re$ at which a transition to turbulence occurs e.g. $Re _{critical, flat plate} = 5 \times 10^5$
+        \end{itemize}
+
+    \end{itemize}
+    \item Two boundary layers are developing - velocity, thermal \begin{itemize}
+        \item The velocity goes from $V_{\infty}$ down to $0$ and the temperature goes down from $T_{\infty}$ to $T_s$
+        \item Let $\delta_v$ be the velocity boundary layer and $\delta_t$ be the thermal boundary layer
+        \item $\delta_t$ may be smaller or larger than $\delta_v$. How do we tell? \begin{itemize}
+            \item This depends on the physical properties of the fluid
+        \end{itemize}
+        \item Fluids with high viscosity $\nu$ (oils) have thick velocity BL i.e. $\delta_v$ is a large fraction of $V_{\infty}$
+        \item Fluids with high thermal diffusivity ()$\alpha = \frac{k}{\rho c_p}$) have thick thermal BL
+        \item The ratio $\frac{\delta_v}{\delta_t}$ is given by the ratio $\frac{\nu}{\alpha}$
+        \item The Prandtl Number is defined to be this ratio: $Pr = \frac{\nu}{\alpha} = \frac{\mu c_p}{k}$
+        \item $Pr$ is a fluid property
+        \item For $Pr \ll 1$ (e.g. a liquid metal) $\delta_v \ll \delta_t$
+        \item For $Pr \gg 1$ (e.g. oils) $\delta_v \gg \delta_t$
+        \item For $Pr \sim 1$ (e.g. gases) $\delta_t \sim \delta_v$
+    \end{itemize}
+    \item We have two dimensionless parameters $Re = \frac{\rho V_{\infty} D}{\mu}$ and $Pr = \frac{\nu}{\alpha}$
+    \item Need to non dimensionalize $h$ \begin{itemize}
+        \item $\dot{Q}_{conv} = hA (T_s - T_{\infty}) \sim hD^2 (T_s - T_{\infty})$
+        \item Suppose the fluid was not moving
+        \item Then heat transfer is by conduction only
+        \item $\dot{Q}_{cond} = k_{fluid} A \frac{dT}{dr} \sim k_{fluid} D^2 \frac{T_s - T_{\infty}}{D}$
+        \item How much is heat transfer enhanced due to convection 
+        \item This is given by the ratio $\frac{\dot{Q}_{conv}}{\dot{Q}_{cond}} = \frac{hD}{k_{fluid}}$ which is a dimensionless number
+        \item This ratio is known as the Nusselt number $Nu = \frac{hD}{k_{fluid}}$
+        \item Do not confuse with $Bi = \frac{hD}{k_{solid}}$
+    \end{itemize}
+    \item We started with $h = f(D, V_{\infty}, \rho, \mu, c_p, k)$ and dependent on the geometry
+    \item This can now be written as $\frac{hD}{k} = f \left(\frac{\rho D V_{\infty}}{\mu} , \frac{\mu c_p}{k} \right)$ and dependent on the geometry
+    \item $\implies Nu = f(Re, Pr)$ and geometry
+    \item Can do experiments \begin{itemize}
+        \item Consider a plate with a uniform heat flux due to an electrical current through it
+        \item Can put it into a wind tunnel with $V_{\infty}$ and $T_{\infty}$
+        \item We know that $\dot{Q} = h A(T_s - T_{\infty}) = P = EI $ (electrical power)
+        \item We know the other variables and can thus solve for $h$ and plot it as a function of $V_{\infty}$
+        \item Repeat for different plate sizes, different $T_s$ and different $T_{\infty}$
+        \item Can plot $Nu$ vs $Re$ and all the data should fall on the same curve
+        \item Repeat for different fluids to get different curves for different fluids
+        \item Can then plot $\ln (\frac{Nu}{Pr^n})$ against $\ln Re$ and the data for different fluids will all lie on the same line
+        \item $\ln (\frac{Nu}{Pr^n}) = m \ln Re + C$ or equivalently $Nu = c Re^m Pr^n$ where $n, m, C$ are determined experimentally for each geometry
+    \end{itemize}
+\end{itemize}
+
 \end{document}

@@ -541,4 +541,67 @@
     \end{itemize}
 \end{itemize}
 
+\section{Forced convection correlations} \begin{itemize}
+    \item Read Ch 19.3, 19.4. 19.5 - 19.8 will not be covered
+    \item Dimensionless Analysis \begin{itemize}
+        \item Consider a tube with velocity from the bottom \begin{itemize}
+            \item $Z$ (height) is in terms of $P, V$
+            \item What are relevant parameters? \begin{itemize}
+                \item $P, V, z$
+                \item Fluid properties: $\rho$
+                \item Gravity $g$
+            \end{itemize}
+            \item Develop an equation relating $P, V, z, \rho, g$
+            \item If we develop an equation, the dimension of both sides must be equal
+            \item $P [\frac{N}{m^2}] = \frac{ kg \frac{m}{s^2} }{m^2} = [\frac{kg}{ms^2}]$
+            \item $\frac{P}{\rho}$ is in $ [ \frac{m^2}{s^2}] \implies \frac{P}{\rho V^2} [\frac{m^2}{s^2} \times \frac{s^2}{m^2}]$
+            \item $\frac{g}{V^2}$ is also dimensionless
+            \item Therefore $\frac{P}{\rho V^2} = f \left(\frac{gz}{v} \right)$
+            \item We plot $\frac{P}{\rho V^2}$ against $\frac{gz}{V^2}$ and we discover that all data falls on one line. If it doesnt fall on one line, the analysis was done incorrectly
+            \item Thus $\frac{P}{\rho V^2} = - \frac{gz}{v^2} + C_1$ which when simplified gives $\frac{P}{\rho} + gz + \frac{V^2}{2}$ which is a constant. We can derive Bernoulli's equation experimentally in this way
+        \end{itemize}
+    \end{itemize}
+    \item Forced Convection Correlation \begin{itemize}
+        \item Flow over a flate plate
+        \item $V_{\infty}$ flowing from the left, laminar region, then transition and then turbulenc
+        \item $\tau = \mu \frac{\partial V}{\partial y} \sim \mu \frac{V_{\infty}}{\delta_V}$
+        \item As $\delta_v$ goes up, $\tau$ goes down
+        \item Local frictional coefficient $c_{f,x}$ goes down initially while in laminar, then goes up while in transition and finally goes down again in turbulence region
+        \item For laminar flow $c_{f,x} = \frac{0.664}{Re_{x}^{\frac{1}{2}}}$
+        \item Local Reynolds number = $Re_{x} = \frac{V_{\infty}x}{\nu}$
+        \item Average friction coefficient over length $L$ of plate: $c_f = \frac{1}{L} \int_{0}^{L} c_{f,x} \, dx  = \frac{1}{L} \int_{0}^{L} \frac{0.664}{Re_x^{\frac{1}{2}}} \, dx = \frac{1}{L} 0.664 (\frac{\nu}{V_{\infty}})^{\frac{1}{2}} \int_{0}^{L} \frac{dx}{x^{\frac{1}{2}}} = \frac{2}{L} \times 0.664 (\frac{\nu}{V_{\infty}})^{\frac{1}{2}} \cdot L^{\frac{1}{2}}$
+        \item This gives $c_f = \frac{1.328}{Re_L^{\frac{1}{2}}}$
+        \item The heat transfer coefficient $h = - \frac{k}{T_s - T_{\infty}}  \frac{\partial T}{\partial y} |_{y = 0}$ so that $\frac{\partial T}{\partial y} \sim \frac{T_s - T_{\infty}}{\delta_t}$
+        \item As $\delta_t$ increases, $\frac{\partial T}{\partial y}$ goes down implying that $h$ decreases
+        \item So $h$ decreases while in laminar flow, increases in the transition and then decreases again in turbulent region
+        \item We define a Local Nusselt Number: $Nu_x = \frac{h_x x}{k}$
+        \item For laminar flow, $Nu_x = 0.332 Re_x ^{\frac{1}{2}} Pr ^ {\frac{1}{3}}$ where $Pr \geq 0.6$
+        \item The average Nusselt number is $Nu = \frac{hL}{k} = \frac{1}{L} \int_{0}^{L} Nu_x \, dx$
+        \item This gives $Nu = 0.664 Re_L^{\frac{1}{2}} Pr^{\frac{1}{3}}$
+        \item For turbulent flow, $Re_x > 5 \times 10^5$ and $c_{f,x } = \frac{0.0592}{Re_x^{\frac{1}{2}}}$
+    \end{itemize}
+    \item Example \begin{itemize}
+        \item Air with $T_{\infty} = 300 C$, $V_{\infty} = 10$ on a tube with $T_s = 50$ and $L = 0.5$. Find $\dot{Q}_{cooling}$
+        \item The film temperature is used where $T_f = \frac{T_{\infty}+T_s}{2}$
+        \item In this case, $T_f = 175$ and using $\nu = 3.18 \times 10^{-5}$, $Pr = 0.7$ and $k = 0.0363$ (using tables)
+        \item Therefore $Re_L = \frac{V_{\infty}L}{\nu} = 1.57 \times 10^5$
+        \item Flow is laminar since $Re_L < 5 \times 10^5$
+        \item $Nu = 0.664 Re_L ^{\frac{1}{2}} Pr^{\frac{1}{3}} = 233.6$
+        \item $Nu = \frac{hL}{k} \implies h = \frac{Nu k}{L} = 16.9 \frac{W}{m^2 C}$
+        \item Cooling per unit width of the plate $\dot{Q} = hA(T_{\infty} - T_s) = 16.9 \times (0.5 \times 1) (300 - 50) = 2112.5 \frac{W}{m}$
+    \end{itemize}
+    \item Flows over cylinders and spheres \begin{itemize}
+        \item Flow seperation causes wake
+        \item Not to be confused with turbulence 
+        \item Turbulence occurs when $Re = \frac{V_{\infty} D}{\nu} > 2 \times 10^5$
+        \item For flow accross cylinders, $Nu = c Re^m Pr^n$
+        \item The values of $c, m, n$ depend on the range of the Reynolds number - given in Table 19.2
+        \item Churchill \& Bernstein correlation is valid for $Re Pr > 0.2$
+        \item Fluid properties evaluated at $T_f = \frac{T_s + T_{\infty}}{2}$
+        \item Flow over a sphere has $Nu = 2 + [0.4 Re^{\frac{1}{2}} + 0.06 Re^{\frac{2}{3}}] \cdot Pr^{0.4} \left(\frac{\mu_{\infty}}{\mu_s} \right) ^{0.25}$
+        \item All properties evaluated at $T_{\infty}$ and $mu_s$ is evaluated at $T_s$
+        \item Valid for $3.5 \leq Re \leq 80000$ and $0.7 \leq Pr \leq 380$
+    \end{itemize}
+\end{itemize}
+
 \end{document}

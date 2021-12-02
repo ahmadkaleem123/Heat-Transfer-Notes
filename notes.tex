@@ -604,4 +604,57 @@
     \end{itemize}
 \end{itemize}
 
+\section{Thermal Radiation, Black body radiation, Radiative properties}
+
+\begin{itemize}
+    \item Read Ch 21.1 - 21.4
+    \item Radiation \begin{itemize}
+        \item Consider a solid at temperature $T_s$ with an enclosure outside at $T_{surr}$ and a vacuum in between
+        \item Initially $T_s > T_{surr}$
+        \item No conduction, convection since vacuum so heat transfer is by radiation
+        \item Solid will lose heat to surrounding surface and cool until $T_s = T_{surr}$
+        \item Thermal radiation: Energy is emitted by matter as a result of its finite temperature
+        \item Energy is in the form of electromagnetic waves
+        \item Radiation has wave properties: frequency $\nu$ and wavelength $\lambda$ related by $\lambda = \frac{c}{\nu}$
+        \item Thermal radiation has a wavelength from 0.1 to 100 $\mu m$. This includes ultraviolet ($0.1 - 0.4 \mu m$), visible light ($0.4 - 0.7 \mu m$) and infrared ($0.7 - 100 \mu m$)
+        \item For opaque objects, radiation occurs from the surface
+    \end{itemize}
+    \item Black body radiation \begin{itemize}
+        \item A block body is a perfect emitter of radiation
+        \item At a given temperature, no surface can emit more energy than a Blackbody
+        \item A blackbody absorbs all radiation incident on 
+        \item It emits equally in all directions. It is a "diffuse" service
+        \item The Stefan-Boltzmann law: The radiation energy emitted by a blackbody per unit time and per unit surface area is: $E_b = \sigma T^4$ (in $\frac{W}{m^2}$) where $\sigma = 5.67 \times 10^{-8}$, $E_b$ is the blackbody emissive power and $T$ is the temperature in $K$
+        \item A surface painted black is close to a blackbody for visible radiation 
+        \item A white surface absorbs infrared light - can be considered a blackbody in IR 
+        \item Depending on the wavelength, different objects can be considered blackbodies
+        \item To get a perfect blackbody, you take a box with a small opening and the opening is the blackbody 
+        \item This is because the aperture absorbs all light (anything that goes inside the opening reflects inside there and is thus absorbed)
+        \item Radiation from a real surface encompasses a range of wavelengths. This is described by a "spectral distribution"
+        \item Can plot Emission energy $E_{b, \lambda}$ against $\lambda$ to obtain a curve described by Planck's Law: $E_{b, \lambda}  = \frac{c_1}{\lambda^5 \left[ \exp(\frac{c_2}{\lambda T}) -1 \right]}$
+        \item There may also be a directional distribution
+        \item Surface emits more in a given direction
+    \end{itemize}
+    \item Radiation properties \begin{itemize}
+        \item For a real surface, the emissive power is less than that of a blackbody 
+        \item We define a surface property - emissivity
+        \item $\varepsilon(T) = \frac{E(t)}{E_b(t)}$ where $E(t)$ is integrated over all $\lambda$ and $\theta$ and $E_b(t)$ is integrated over all $\lambda$
+        \item We will assume that $\varepsilon$ is independent of $\lambda$. This is known as a gray surface
+        \item $\epsilon$ is independent of $\theta$: A diffuse surface
+        \item The emissive power of a real surface is $E(t) = \varepsilon \sigma T^4$
+    \end{itemize}
+    \item Surface Absorption, Reflection and Transmission  \begin{itemize}
+        \item $G$ is the incident radiation in $\frac{W}{m^2}$
+        \item Part of it will be reflected ($G_{ref}$), part will be absorbed $G_{abs}$ and the rest will be transmitted ($G_{transmitted}$)
+        \item $G$-radiation is the radiant energy incident on a surface per unit surface area per unit time 
+        \item Define 3 properties: Absorptivity $\alpha = \frac{G_{abs}}{G}$, the reflectivity $\rho = \frac{G_{ref}}{G}$ and the transmittivity $\tau = \frac{G_{tr}}{G}$
+        \item In general $\alpha + \rho + \tau = 1$
+        \item For opaque objects, $\tau = 0$, for a blackbody $\alpha = 1$
+        \item The "Gray Body assumption" is that $\alpha, \rho, \tau$ are independent of $\lambda$
+        \item The "Diffuse surface assumption" is that $\alpha, \rho, \tau$ do not depend on direction 
+    \end{itemize}
+    
+\end{itemize}
+
+
 \end{document}

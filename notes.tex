@@ -656,5 +656,91 @@
     
 \end{itemize}
 
+\section{Radiation heat transfer - black surfaces} 
+
+\begin{itemize}
+    \item Consider a small body inside an enclosre \begin{itemize}
+        \item Let the small body have surface area $A$, emissivity $\epsilon$ and absorptivity $\alpha$
+        \item The temperature inside the enclosure is $T$ and at equilibirum both the surface and the inside are at the same temperature 
+        \item $G$ is the incident radiation per unit area 
+        \item The large cavity acts as a black body
+        \item We neglect absorption by the small body
+        \item The cavity surfaces absorb all incident radiation 
+        \item We can assume that $G = \sigma T^4$ 
+        \item For a small body $E_{abs} = \alpha G A  =\alpha \sigma T^4 A$ is the energy absorbed
+        \item $E_{emit} = \epsilon \sigma T^4 A$
+        \item At equilibrium, $E_{abs} = E_{emit}$ so that $\sigma = \epsilon$
+        \item This is Kirchoff's law which says that for any surface the emissivity is equal to the absorptivity 
+    \end{itemize}
+    \item Radiation between surfaces \begin{itemize}
+        \item Two surfaces which are exchanging energy due to radiation 
+        \item Amount of radiation incident on a surface depends on the orientation of the surfaces 
+    \end{itemize}
+    \item The View Factor \begin{itemize}
+        \item Consider two surfaces $i$ and $j$
+        \item We define the view facor $F_{ij}$ as the fraction of radiation leaving surface $i$ that reaches surface $j$ directly
+        \item e.g. $F_{1,3}$ is the fraction of energy leaving surface 1 which reaches surface 3 directly
+        \item Can also define $F_{ii}$ for a concave surface which would be the fraction leaving it that reaches it on the other end 
+        \item If the surface is convex, $F_{ii} = 0$
+        \item If one surface $i$ is completely enclosed by another surface $j$, $F_{ii} = 0$ and $F_{ij} = 1$
+    \end{itemize}
+    \item Calculation of view factors \begin{itemize}
+        \item Done by integrating geometric shapes
+        \item Can calculate the energy exchanges $dA_1$ and $dA_2$
+        \item For common geometries, the view factor calculations can be done based on charts and tables 
+        \item Table 21.3, 21.4, Fig 21.33 can be used 
+        \item In general, for an enclosure with $N$ sides, $\sum_{i=1}{N} F_{ij} = 1$
+        \item All radiation leaving surface $i$ must be intercepted by other surfaces
+        \item For an enclosure of $N$ surfaces, a total of $N^2$ view factors 
+        \item These can be put into a matrix
+        \item Not all view factors are independent. The summation rule says that $\sum_{j=1}^{N} F_{i,j} = 1$
+        \item The reciprocity rule \begin{itemize} 
+            \item If $A_1, A_2$ are blackbodies then all incident radiation is absorbed so that $\alpha = \epsilon = 1$
+            \item Then the energy leaving $A_1$ and reaching $A_2$ is $E_{b1} A_1 F_{12}$
+            \item Doing the same in the reverse direction, the energy leaving $A_2$ and reaching $A_1$ is $E_{b2} A_2 F_{21}$
+            \item The net energy exchange $Q_{12}$ is $Q_{12} = E_{b1} A_1 F_{12} - E_{b2} A_2 F_{21}$
+            \item If both bodies are at the same temperature, there is thermal equilibrium so $Q_{12}  =0$
+            \item Moreover $E_{b1} = E_{b2} = \sigma T^4$
+            \item Thus $A_1 F_{12} = A_2 F_{21}$ 
+            \item $A_1, A_2, F_{12}, F_{21}$ are all geometric properties independent of $T, \epsilon$
+            \item Thus in general for any two surface $i, j$, $A_i F_{ij} = A_j F_{ji}$
+        \end{itemize}
+        \item Superposition \begin{itemize}
+            \item Suppose you break up surface $j$ in two parts $a$ and $b$
+            \item Then $F_{ij} = F_{i, ja} + F_{1, jb}$
+        \end{itemize}
+        \item Symmetry \begin{itemize}
+            \item Consider a geometry such that surface $j$ and $k$ are identical 
+            \item Then $F_{ij} = F_{ik}$ and $F_{ji} = F_{ki}$
+        \end{itemize}
+    \end{itemize}
+    \item Example: Long duct of length $L$ \begin{itemize}
+        \item A 3/4 circle with radius $R$ with area $A_2$ and the slice with area $A_1$
+        \item $F_{12} = 1$. Note $F_{21} \neq 1$ since 2 is concave and not all of the radiation goes from there to $A_1$
+        \item $A_2 F_{21} = A_1 F_{12} \implies F_{21} = \frac{A_1}{A_2} F_{12}$
+        \item $\implies F_{21} = \frac{2R L}{\frac{3}{4} (2 \pi R) L} = \frac{4}{3 \pi} \approx 0.424$
+        \item $F_{22} + F_{21}  = 1 \implies F_{22} = 1 - F_{21} = 0.576$
+    \end{itemize}
+    \item Example: Small sphere under a concentric hemisphere \begin{itemize}
+        \item $A_1$ is the area of the small sphere and $A_2$ is that of the hemisphere so that $A_2 = 2A_1$
+        \item We can extend the hemisphere to a sphere and let $A_3$ be the area of the added region (ADD DIAGRAM)
+        \item We know that $F_{11} + F_{12} + F_{13} = 1$ where $F_{11} = 0$ since it is a convex surface 
+        \item By symmetric, $F_{12} = F_{13} \implies F_{12} = 0.5$
+        \item By reciprocity, $F_{21} = \frac{A_1}{A_2} F_{12} = \frac{A_1}{2 A_1} 0.5$ so $F_{21} = 0.25$
+    \end{itemize}
+    \item Radiation from black surfaces \begin{itemize}
+        \item Black surface means no reflection 
+        \item All incident radiation is absorbed 
+        \item Two surface $A_1$ and $A_2$ with temperatures $T_1$ and $T_2$ respectively 
+        \item Energy from $A_1 \rightarrow A_2 = A_1 E_{b1} F_{12}$
+        \item Energy from $A_2 \rightarrow A_1 = A_2 E_{b2} F_{21}$ 
+        \item Net radiation exchange $\dot{Q}_{12} = A_1 E_{b1} F_{12} - A_2 E_{b2} F_{21}$ 
+        \item Since $A_1 F_{12} = A_2 F_{21}$, $\dot{Q}_{12} = A_1 F_{12} (E_{b1} - E{b2})$
+        \item $\implies \dot{Q}_{12} = A_1 F_{12} \sigma (T_1^4 - T_2^4)$
+        \item Since $F_{12} = 1$, $\dot{Q}_{12} = A_1 \sigma (T_1^4 - T_2^4)$
+    \end{itemize}
+    
+\end{itemize}
+
 
 \end{document}

@@ -742,5 +742,53 @@
     
 \end{itemize}
 
+\section{Radiation Heat Transfer - Diffuse, Grey Surfaces} 
+
+\begin{itemize}
+    \item Read Chapter 21.8
+    \item Not all surfaces are black 
+    \item For a more realistic analysis, assume that surfaces are 1. Isothermal, 2. Opaque, 3. Diffuse ($\epsilon$ is independent of $\Theta$) and 4. Grey ($\epsilon$ is independent of $\lambda$)
+    \item New Terms \begin{itemize}
+        \item Define $G$ as the irradiation: total radiation that is incident on a surface per unit time and per unit area 
+        \item Define $J$ as the radiosity: total radiation energy which leaves a surface per unit area and per unit time 
+        \item $E = \epsilon E_b$. $J = \epsilon E_b + \rho G$ where $E_b = \sigma T^4$
+        \item $\rho = 1 - \alpha = 1 -\epsilon$ 
+        \item We can simplify $J$ as $\epsilon E_b + (1-\epsilon) G$
+        \item Net energy leaving the surface per unit area: $\frac{\dot{Q}}{A} = J - G$ 
+        \item The total energy is then $\dot{Q} = A(J - G)$ and since $J = \epsilon E_b + (1-\epsilon) G$, we can rearrange to get $G = \frac{J - \epsilon E_b}{1 - \epsilon}$
+        \item Substituting this gives $\dot{Q} = A \left( \frac{\epsilon E_b - J}{1- \epsilon} \right)$ or $\dot{Q} = \frac{E_b - J}{ \frac{1 - \epsilon}{\epsilon A}}$
+    \end{itemize}
+    \item Electrical analogy \begin{itemize}
+        \item Can think of $R = \frac{1 - \epsilon}{\epsilon A}$ as a resistance 
+        \item We call it the surface resistance to radiation 
+        \item For a blackbody $\epsilon = 1 \implies R = 0$ and so there is no resistance 
+    \end{itemize}
+    \item Radiation exchange between grey surfaces \begin{itemize}
+        \item Two grey surfaces, surface $i$ and surface $j$
+        \item Net energy leaving surface $i$ is $J_i$ and the net energy leaving surface $j$ is $J_j$
+        \item We are interested in the net exchange between these two surfaces
+        \item Radiation from $i$ that reaches $j$ is $J_i A_i F_{ij}$
+        \item Radiation from $j$ that reaches $i$ is $J_j A_j F_{ji}$
+        \item Net heat transfer $\dot{Q}_{ij} = J_i A_i F_{ij} - J_j A_j F_{ji}$
+        \item Using the reciprocity equation, $A_i F_{ij} = A_j F_{ji}$ which then means that $\dot{Q}_{ij} = A_i F_{ij} (J_i - J_j) = \frac{J_i - J_j}{(A_i F_i j)^{-1}}$
+        \item We refer to $\frac{1}{A_i F_{ij}}$ as the space resistance and this depends on the shape of the surfaces and how they are oriented
+    \end{itemize}
+    \item Two surface enclosure \begin{itemize}
+        \item Insert diagram and resistance
+        \item $\dot{Q}_{12}  = \dot{Q}_1 = - \dot{Q}_2$
+        \item Can write $\dot{Q}_{12} = \frac{E_{b1} - E_{b2}}{R_{total}} = \frac{\sigma(T_1^4 - T_2^4)}{\frac{1-\epsilon_1}{A_1 \epsilon_1} + \frac{1}{A_1 F_{12}} + \frac{1- \epsilon_2}{A_2 \epsilon_2}}$
+    \end{itemize}
+    \item Example \begin{itemize}
+        \item Two surfaces. Top surface has $T_1 = 1000 K$, $\epsilon_1 = 1$ and bottom surface has $T_2 = 500 K$ and $\epsilon_2 = 0.8$
+        \item What is the net radiation exchange between plates per unit area? 
+        \item $A_1 = A_2 = A$, $F_{12} = 1 - (large plates)$
+        \item Then $\dot{Q}_{12} = \frac{\sigma(T_1^4 - T_2^4)}{\frac{1-\epsilon_1}{A_1 \epsilon_1} + \frac{1}{A_1 F_{12}} + \frac{1- \epsilon_2}{A_2 \epsilon_2}}$ so that $\frac{\dot{Q}_{12}}{A} = \frac{\sigma(T_1^4 - T_2^4)}{\frac{1-\epsilon_1}{\epsilon_1} + 1 + \frac{1- \epsilon_2}{\epsilon_2}}$
+        \item Simplifying, $\frac{\dot{Q}_{12}}{A} = \frac{\sigma(T_1^4 - T_2^4)}{\frac{1}{\epsilon_2}} = \epsilon_2 \sigma (T_1^4 - T_2^4)$
+    \end{itemize}
+    \item Example 2 \begin{itemize}
+        \item See Lecture notes!
+    \end{itemize}
+\end{itemize}
+
 
 \end{document}
